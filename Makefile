@@ -6,9 +6,9 @@
 #
 
 PORTNAME=	graphite-web
-PORTVERSION=	0.9.8
+PORTVERSION=	0.9.9
 CATEGORIES=	net-mgmt python
-MASTER_SITES=	http://launchpad.net/graphite/1.0/${PORTVERSION}/+download/
+MASTER_SITES=	http://launchpad.net/graphite/0.9/${PORTVERSION}/+download/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	ssanders@taximagic.com
@@ -26,8 +26,8 @@ PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 
 FETCH_ARGS=	"-pRr"		# default '-AFpr' prevents 302 redirects by launchpad
 
-RUN_DEPENDS+=   ${PYTHON_LIBDIR}/site-packages/cairo/__init__.py:${PORTSDIR}/graphics/py-cairo \
-                ${PYTHON_LIBDIR}/site-packages/django/__init__.py:${PORTSDIR}/www/py-django \
+RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/cairo/__init__.py:${PORTSDIR}/graphics/py-cairo \
+		${PYTHON_LIBDIR}/site-packages/django/__init__.py:${PORTSDIR}/www/py-django \
 		${PYTHON_LIBDIR}/site-packages/whisper.py:${PORTSDIR}/databases/py-whisper
 
 OPTIONS=	APACHE "Use apache as webserver" on \
@@ -42,32 +42,37 @@ GRAPHITE_LOGDIR?=	"/var/log/graphite"
 
 .include <bsd.port.options.mk>
 
-.if defined (WITH_CARBON)
+.if !defined(WITHOUT_CARBON)
 RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/carbon/__init__.py:${PORTSDIR}/net-mgmt/py-carbon
 .endif
 
-.if defined (WITH_APACHE)
+.if !defined(WITHOUT_APACHE)
 USE_APACHE_RUN= 2.0+
 .endif
 
-.if defined(WITH_MODPYTHON3)
+.if !defined(WITHOUT_MODPYTHON3)
 RUN_DEPENDS+=   ${LOCALBASE}/${APACHEMODDIR}/mod_python.so:${PORTSDIR}/www/mod_python3
 .endif
 
-.if defined(WITH_MODWSGI3)
+.if !defined(WITHOUT_MODWSGI3)
 RUN_DEPENDS+=   ${LOCALBASE}/${APACHEMODDIR}/mod_wsgi.so:${PORTSDIR}/www/mod_wsgi3
 .endif
 
-.if defined(WITH_MYSQL)
+.if !defined(WITHOUT_MYSQL)
 RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.2:${PORTSDIR}/databases/py-MySQLdb
 .endif
 
-.if defined(WITH_MODPYTHON3) && !defined(WITH_APACHE)
-IGNORE=	"mod_python3 needs Apache, please select Apache"
+.if !defined(WITHOUT_SQLITE3)
+USE_SQLITE=	3
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:${PORTSDIR}/databases/py-sqlite3
 .endif
 
-.if defined(WITH_MODWSGI3) && !defined(WITH_APACHE)
-IGNORE=	"mod_wsgi3 needs Apache, please select Apache"
+.if !defined(WITHOUT_MODPYTHON3) && defined(WITHOUT_APACHE)
+IGNORE=	mod_python3 needs Apache, please select Apache
+.endif
+
+.if !defined(WITHOUT_MODWSGI3) && defined(WITHOUT_APACHE)
+IGNORE=	mod_wsgi3 needs Apache, please select Apache
 .endif
 
 post-patch:
@@ -88,7 +93,7 @@ post-patch:
 		-e "s|^\(STORAGE_DIR = \).*|\1'${GRAPHITE_DBDIR}/graphite/'|" \
 		-e "s|^\(LOG_DIR = \).*|\1'${GRAPHITE_LOGDIR}/'|" \
 		-e "s|^\(THIRDPARTY_DIR = \).*|\1GRAPHITE_ROOT + 'thirdparty/'|" ${WRKSRC}/webapp/graphite/settings.py
-	
+
 	@${REINPLACE_CMD} -e "s|%%GRAPHITE_DBDIR%%|${GRAPHITE_DBDIR}|g" \
 		-e "s|%%EXAMPLESDIR%%|${EXAMPLESDIR}|g" ${WRKSRC}/setup.py
 

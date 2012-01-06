@@ -1,5 +1,6 @@
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/dashboard.conf.example
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphite.wsgi.example
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphTemplates.conf.example
 %%WWWDIR%%/graphite/__init__.py
 %%WWWDIR%%/graphite/__init__.pyc
 %%WWWDIR%%/graphite/account/__init__.py
@@ -44,6 +45,20 @@
 %%WWWDIR%%/graphite/dashboard/urls.pyc
 %%WWWDIR%%/graphite/dashboard/views.py
 %%WWWDIR%%/graphite/dashboard/views.pyc
+%%WWWDIR%%/graphite/events/__init__.py
+%%WWWDIR%%/graphite/events/__init__.pyc
+%%WWWDIR%%/graphite/events/models.py
+%%WWWDIR%%/graphite/events/models.pyc
+%%WWWDIR%%/graphite/events/urls.py
+%%WWWDIR%%/graphite/events/urls.pyc
+%%WWWDIR%%/graphite/events/views.py
+%%WWWDIR%%/graphite/events/views.pyc
+%%WWWDIR%%/graphite/graphlot/__init__.py
+%%WWWDIR%%/graphite/graphlot/__init__.pyc
+%%WWWDIR%%/graphite/graphlot/urls.py
+%%WWWDIR%%/graphite/graphlot/urls.pyc
+%%WWWDIR%%/graphite/graphlot/views.py
+%%WWWDIR%%/graphite/graphlot/views.pyc
 %%WWWDIR%%/graphite/local_settings.py.example
 %%WWWDIR%%/graphite/logger.py
 %%WWWDIR%%/graphite/logger.pyc
@@ -51,6 +66,8 @@
 %%WWWDIR%%/graphite/manage.pyc
 %%WWWDIR%%/graphite/metrics/__init__.py
 %%WWWDIR%%/graphite/metrics/__init__.pyc
+%%WWWDIR%%/graphite/metrics/search.py
+%%WWWDIR%%/graphite/metrics/search.pyc
 %%WWWDIR%%/graphite/metrics/urls.py
 %%WWWDIR%%/graphite/metrics/urls.pyc
 %%WWWDIR%%/graphite/metrics/views.py
@@ -73,7 +90,6 @@
 %%WWWDIR%%/graphite/render/glyph.pyc
 %%WWWDIR%%/graphite/render/grammar.py
 %%WWWDIR%%/graphite/render/grammar.pyc
-%%WWWDIR%%/graphite/render/graphTemplates.conf
 %%WWWDIR%%/graphite/render/hashing.py
 %%WWWDIR%%/graphite/render/hashing.pyc
 %%WWWDIR%%/graphite/render/urls.py
@@ -90,8 +106,13 @@
 %%WWWDIR%%/graphite/templates/cli.html
 %%WWWDIR%%/graphite/templates/composer.html
 %%WWWDIR%%/graphite/templates/dashboard.html
+%%WWWDIR%%/graphite/templates/dashboardHelp.html
 %%WWWDIR%%/graphite/templates/editProfile.html
+%%WWWDIR%%/graphite/templates/event.html
+%%WWWDIR%%/graphite/templates/events.html
+%%WWWDIR%%/graphite/templates/graphlot.html
 %%WWWDIR%%/graphite/templates/login.html
+%%WWWDIR%%/graphite/templates/version.html
 %%WWWDIR%%/graphite/thirdparty/__init__.py
 %%WWWDIR%%/graphite/thirdparty/__init__.pyc
 %%WWWDIR%%/graphite/thirdparty/pyparsing.py
@@ -108,6 +129,12 @@
 %%WWWDIR%%/graphite/urls.pyc
 %%WWWDIR%%/graphite/util.py
 %%WWWDIR%%/graphite/util.pyc
+%%WWWDIR%%/graphite/version/__init__.py
+%%WWWDIR%%/graphite/version/__init__.pyc
+%%WWWDIR%%/graphite/version/urls.py
+%%WWWDIR%%/graphite/version/urls.pyc
+%%WWWDIR%%/graphite/version/views.py
+%%WWWDIR%%/graphite/version/views.pyc
 %%WWWDIR%%/graphite/views.py
 %%WWWDIR%%/graphite/views.pyc
 %%WWWDIR%%/graphite/whitelist/__init__.py
@@ -116,7 +143,6 @@
 %%WWWDIR%%/graphite/whitelist/urls.pyc
 %%WWWDIR%%/graphite/whitelist/views.py
 %%WWWDIR%%/graphite/whitelist/views.pyc
-%%WWWDIR%%/graphite_web-0.9.8-py2.7.egg-info
 %%WWWDIR%%/webapp/content/css/cli.css
 %%WWWDIR%%/webapp/content/css/darkX.css
 %%WWWDIR%%/webapp/content/css/darkX/button-close-focused.png
@@ -130,6 +156,8 @@
 %%WWWDIR%%/webapp/content/css/darkX/titlebar-left-focused.png
 %%WWWDIR%%/webapp/content/css/darkX/titlebar-mid-focused.png
 %%WWWDIR%%/webapp/content/css/darkX/titlebar-right-focused.png
+%%WWWDIR%%/webapp/content/css/dashboard-default.css
+%%WWWDIR%%/webapp/content/css/dashboard-white.css
 %%WWWDIR%%/webapp/content/css/dashboard.css
 %%WWWDIR%%/webapp/content/css/default.css
 %%WWWDIR%%/webapp/content/css/default/bottom_left.gif
@@ -149,6 +177,8 @@
 %%WWWDIR%%/webapp/content/css/default/top_left.gif
 %%WWWDIR%%/webapp/content/css/default/top_mid.gif
 %%WWWDIR%%/webapp/content/css/default/top_right.gif
+%%WWWDIR%%/webapp/content/css/jquery.autocomplete.css
+%%WWWDIR%%/webapp/content/css/table.css
 %%WWWDIR%%/webapp/content/html/completerHelp.html
 %%WWWDIR%%/webapp/content/html/searchHelp.html
 %%WWWDIR%%/webapp/content/html/timeHelp.html
@@ -168,7 +198,10 @@
 %%WWWDIR%%/webapp/content/img/folder.png
 %%WWWDIR%%/webapp/content/img/graphite.png
 %%WWWDIR%%/webapp/content/img/graphite_short.png
+%%WWWDIR%%/webapp/content/img/indicator.png
 %%WWWDIR%%/webapp/content/img/leaf.gif
+%%WWWDIR%%/webapp/content/img/mini-bottom2.gif
+%%WWWDIR%%/webapp/content/img/mini-top2.gif
 %%WWWDIR%%/webapp/content/img/save.gif
 %%WWWDIR%%/webapp/content/img/searching.gif
 %%WWWDIR%%/webapp/content/img/updateGraph.gif
@@ -624,6 +657,13 @@
 %%WWWDIR%%/webapp/content/js/ext/resources/images/default/window/right-corners.psd
 %%WWWDIR%%/webapp/content/js/ext/resources/images/default/window/top-bottom.png
 %%WWWDIR%%/webapp/content/js/ext/resources/images/default/window/top-bottom.psd
+%%WWWDIR%%/webapp/content/js/ext/ux/DataViewTransition.js
+%%WWWDIR%%/webapp/content/js/jquery.autocomplete.js
+%%WWWDIR%%/webapp/content/js/jquery.flot.crosshair.js
+%%WWWDIR%%/webapp/content/js/jquery.flot.js
+%%WWWDIR%%/webapp/content/js/jquery.flot.selection.js
+%%WWWDIR%%/webapp/content/js/jquery.graphite.js
+%%WWWDIR%%/webapp/content/js/jquery.js
 %%WWWDIR%%/webapp/content/js/scriptaculous/builder.js
 %%WWWDIR%%/webapp/content/js/scriptaculous/controls.js
 %%WWWDIR%%/webapp/content/js/scriptaculous/dragdrop.js
@@ -634,68 +674,71 @@
 %%WWWDIR%%/webapp/content/js/window/prototype.js
 %%WWWDIR%%/webapp/content/js/window/window.js
 %%WWWDIR%%/webapp/content/js/window/window_effects.js
-bin/run-graphite-devel-server.py
 @exec mkdir -p /var/log/graphite
 @unexec rmdir /var/log/graphite 2>/dev/null || echo "The logs will be left in /var/log/graphite after the port is deinstalled."
-@dirrm %%WWWDIR%%/webapp/content/js/window
-@dirrm %%WWWDIR%%/webapp/content/js/scriptaculous
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/window
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/tree
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/toolbar
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/tabs
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/slider
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/sizer
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/shared
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/qtip
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/progress
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/panel
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/menu
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/layout
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/grid
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/form
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/editor
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/dd
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/button
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default/box
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images/default
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/images
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/css/visual
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/css/theme-gray
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/css/theme-access
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/css/structure
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources/css
-@dirrm %%WWWDIR%%/webapp/content/js/ext/resources
-@dirrm %%WWWDIR%%/webapp/content/js/ext/pkgs
-@dirrm %%WWWDIR%%/webapp/content/js/ext/examples/shared/icons/fam
-@dirrm %%WWWDIR%%/webapp/content/js/ext/examples/shared/icons
-@dirrm %%WWWDIR%%/webapp/content/js/ext/examples/shared
-@dirrm %%WWWDIR%%/webapp/content/js/ext/examples
-@dirrm %%WWWDIR%%/webapp/content/js/ext/adapter/yui
-@dirrm %%WWWDIR%%/webapp/content/js/ext/adapter/prototype
-@dirrm %%WWWDIR%%/webapp/content/js/ext/adapter/jquery
-@dirrm %%WWWDIR%%/webapp/content/js/ext/adapter/ext
-@dirrm %%WWWDIR%%/webapp/content/js/ext/adapter
-@dirrm %%WWWDIR%%/webapp/content/js/ext
-@dirrm %%WWWDIR%%/webapp/content/js
-@dirrm %%WWWDIR%%/webapp/content/img
-@dirrm %%WWWDIR%%/webapp/content/html
-@dirrm %%WWWDIR%%/webapp/content/css/default
-@dirrm %%WWWDIR%%/webapp/content/css/darkX
-@dirrm %%WWWDIR%%/webapp/content/css
-@dirrm %%WWWDIR%%/webapp/content
-@dirrm %%WWWDIR%%/webapp
-@dirrm %%WWWDIR%%/graphite/whitelist
-@dirrm %%WWWDIR%%/graphite/thirdparty/pytz
-@dirrm %%WWWDIR%%/graphite/thirdparty
-@dirrm %%WWWDIR%%/graphite/templates
-@dirrm %%WWWDIR%%/graphite/render
-@dirrm %%WWWDIR%%/graphite/metrics
-@dirrm %%WWWDIR%%/graphite/dashboard
-@dirrm %%WWWDIR%%/graphite/composer
-@dirrm %%WWWDIR%%/graphite/cli
-@dirrm %%WWWDIR%%/graphite/browser
-@dirrm %%WWWDIR%%/graphite/account
-@dirrm %%WWWDIR%%/graphite
-@dirrm %%WWWDIR%%
+@dirrmtry %%WWWDIR%%/webapp/content/js/window
+@dirrmtry %%WWWDIR%%/webapp/content/js/scriptaculous
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/ux
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/window
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/tree
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/toolbar
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/tabs
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/slider
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/sizer
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/shared
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/qtip
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/progress
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/panel
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/menu
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/layout
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/grid
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/form
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/editor
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/dd
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/button
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default/box
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images/default
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/images
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/css/visual
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/css/theme-gray
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/css/theme-access
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/css/structure
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources/css
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/resources
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/pkgs
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/examples/shared/icons/fam
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/examples/shared/icons
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/examples/shared
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/examples
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/adapter/yui
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/adapter/prototype
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/adapter/jquery
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/adapter/ext
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext/adapter
+@dirrmtry %%WWWDIR%%/webapp/content/js/ext
+@dirrmtry %%WWWDIR%%/webapp/content/js
+@dirrmtry %%WWWDIR%%/webapp/content/img
+@dirrmtry %%WWWDIR%%/webapp/content/html
+@dirrmtry %%WWWDIR%%/webapp/content/css/default
+@dirrmtry %%WWWDIR%%/webapp/content/css/darkX
+@dirrmtry %%WWWDIR%%/webapp/content/css
+@dirrmtry %%WWWDIR%%/webapp/content
+@dirrmtry %%WWWDIR%%/webapp
+@dirrmtry %%WWWDIR%%/graphite/whitelist
+@dirrmtry %%WWWDIR%%/graphite/version
+@dirrmtry %%WWWDIR%%/graphite/thirdparty/pytz
+@dirrmtry %%WWWDIR%%/graphite/thirdparty
+@dirrmtry %%WWWDIR%%/graphite/templates
+@dirrmtry %%WWWDIR%%/graphite/render
+@dirrmtry %%WWWDIR%%/graphite/metrics
+@dirrmtry %%WWWDIR%%/graphite/graphlot
+@dirrmtry %%WWWDIR%%/graphite/events
+@dirrmtry %%WWWDIR%%/graphite/dashboard
+@dirrmtry %%WWWDIR%%/graphite/composer
+@dirrmtry %%WWWDIR%%/graphite/cli
+@dirrmtry %%WWWDIR%%/graphite/browser
+@dirrmtry %%WWWDIR%%/graphite/account
+@dirrmtry %%WWWDIR%%/graphite
+@dirrmtry %%WWWDIR%%
 %%PORTEXAMPLES%%@dirrm %%EXAMPLESDIR%%/conf
 %%PORTEXAMPLES%%@dirrm %%EXAMPLESDIR%%

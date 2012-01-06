@@ -20,7 +20,7 @@ MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	2.4+
 USE_PYDISTUTILS=yes
-PYDISTUTILS_NOEGGINFO=	yes
+PYDISTUTILS_EGGINFODIR=	${WWWDIR}
 PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 				--install-lib=${WWWDIR}
 
@@ -47,19 +47,19 @@ RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/carbon/__init__.py:${PORTSDIR}/net-
 .endif
 
 .if !defined(WITHOUT_APACHE)
-USE_APACHE_RUN= 20+
+USE_APACHE_RUN=	20+
 .endif
 
 .if !defined(WITHOUT_MODPYTHON3)
-RUN_DEPENDS+=   ${LOCALBASE}/${APACHEMODDIR}/mod_python.so:${PORTSDIR}/www/mod_python3
+RUN_DEPENDS+=	${LOCALBASE}/${APACHEMODDIR}/mod_python.so:${PORTSDIR}/www/mod_python3
 .endif
 
 .if !defined(WITHOUT_MODWSGI3)
-RUN_DEPENDS+=   ${LOCALBASE}/${APACHEMODDIR}/mod_wsgi.so:${PORTSDIR}/www/mod_wsgi3
+RUN_DEPENDS+=	${LOCALBASE}/${APACHEMODDIR}/mod_wsgi.so:${PORTSDIR}/www/mod_wsgi3
 .endif
 
 .if !defined(WITHOUT_MYSQL)
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.2:${PORTSDIR}/databases/py-MySQLdb
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.2:${PORTSDIR}/databases/py-MySQLdb
 .endif
 
 .if !defined(WITHOUT_SQLITE3)

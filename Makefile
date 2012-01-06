@@ -22,7 +22,8 @@ USE_PYTHON=	2.4+
 USE_PYDISTUTILS=yes
 PYDISTUTILS_EGGINFODIR=	${WWWDIR}
 PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
-				--install-lib=${WWWDIR}
+				--install-lib=${WWWDIR} \
+				--install-scripts=${PREFIX}/bin
 
 FETCH_ARGS=	"-pRr"		# default '-AFpr' prevents 302 redirects by launchpad
 

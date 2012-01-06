@@ -1,3 +1,5 @@
+bin/run-graphite-devel-server.py
+bin/build-index.sh
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/dashboard.conf.example
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphite.wsgi.example
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphTemplates.conf.example

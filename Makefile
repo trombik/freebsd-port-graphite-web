@@ -47,7 +47,7 @@ RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/carbon/__init__.py:${PORTSDIR}/net-
 .endif
 
 .if !defined(WITHOUT_APACHE)
-USE_APACHE_RUN= 2.0+
+USE_APACHE_RUN= 20+
 .endif
 
 .if !defined(WITHOUT_MODPYTHON3)

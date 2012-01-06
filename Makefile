@@ -43,7 +43,7 @@ GRAPHITE_LOGDIR?=	"/var/log/graphite"
 .include <bsd.port.options.mk>
 
 .if !defined(WITHOUT_CARBON)
-RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/carbon/__init__.py:${PORTSDIR}/net-mgmt/py-carbon
+RUN_DEPENDS+=	${PYTHON_LIBDIR}/site-packages/carbon/__init__.py:${PORTSDIR}/databases/py-carbon
 .endif
 
 .if !defined(WITHOUT_APACHE)

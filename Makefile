@@ -19,6 +19,8 @@ LICENSE=	ASL
 MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	2.4+
+USE_PYDISTUTILS=yes
+PYDISTUTILS_EGGINFODIR=	${WWWDIR}
 
 FETCH_ARGS=	"-pRr"		# default '-AFpr' prevents 302 redirects by launchpad
 
@@ -73,8 +75,6 @@ IGNORE=	mod_wsgi3 needs Apache, please select Apache
 
 .include <bsd.port.pre.mk>
 
-USE_PYDISTUTILS=yes
-PYDISTUTILS_EGGINFODIR=	${WWWDIR}
 PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 				--install-lib=${WWWDIR} \
 				--install-scripts=${PREFIX}/bin

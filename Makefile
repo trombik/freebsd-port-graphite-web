@@ -19,11 +19,6 @@ LICENSE=	ASL
 MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	2.4+
-USE_PYDISTUTILS=yes
-PYDISTUTILS_EGGINFODIR=	${WWWDIR}
-PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
-				--install-lib=${WWWDIR} \
-				--install-scripts=${PREFIX}/bin
 
 FETCH_ARGS=	"-pRr"		# default '-AFpr' prevents 302 redirects by launchpad
 
@@ -76,6 +71,14 @@ IGNORE=	mod_python3 needs Apache, please select Apache
 IGNORE=	mod_wsgi3 needs Apache, please select Apache
 .endif
 
+.include <bsd.port.pre.mk>
+
+USE_PYDISTUTILS=yes
+PYDISTUTILS_EGGINFODIR=	${WWWDIR}
+PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
+				--install-lib=${WWWDIR} \
+				--install-scripts=${PREFIX}/bin
+
 post-patch:
 	@${RM} -f ${WRKSRC}/setup.cfg
 	@${REINPLACE_CMD} -e "s|/opt/graphite|${GRAPHITE_BASE}|g" ${WRKSRC}/conf/graphite.wsgi.example
@@ -98,4 +101,4 @@ post-patch:
 	@${REINPLACE_CMD} -e "s|%%GRAPHITE_DBDIR%%|${GRAPHITE_DBDIR}|g" \
 		-e "s|%%EXAMPLESDIR%%|${EXAMPLESDIR}|g" ${WRKSRC}/setup.py
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

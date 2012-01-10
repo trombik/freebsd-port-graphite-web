@@ -78,7 +78,7 @@ IGNORE=	mod_wsgi3 needs Apache, please select Apache
 
 PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 				--install-lib=${WWWDIR} \
-				--install-scripts=${PREFIX}/bin
+				--install-scripts=${WWWDIR}/graphite/bin
 
 post-patch:
 	@${RM} -f ${WRKSRC}/setup.cfg

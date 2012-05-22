@@ -1,5 +1,5 @@
-bin/run-graphite-devel-server.py
-bin/build-index.sh
+%%WWWDIR%%/graphite/bin/run-graphite-devel-server.py
+%%WWWDIR%%/graphite/bin/build-index.sh
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/dashboard.conf.example
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphite.wsgi.example
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/conf/graphTemplates.conf.example
@@ -803,6 +803,7 @@ bin/build-index.sh
 @dirrmtry %%WWWDIR%%/graphite/composer
 @dirrmtry %%WWWDIR%%/graphite/cli
 @dirrmtry %%WWWDIR%%/graphite/browser
+@dirrmtry %%WWWDIR%%/graphite/bin
 @dirrmtry %%WWWDIR%%/graphite/account
 @dirrmtry %%WWWDIR%%/graphite
 @dirrmtry %%WWWDIR%%

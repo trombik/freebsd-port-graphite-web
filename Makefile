@@ -14,7 +14,9 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	ssanders@taximagic.com
 COMMENT=	Graphite is a highly scalable real-time graphing system
 
-LICENSE=	ASL
+# un-comment when the latest bsd.licenses.db.mk is used everywhere
+# http://www.freebsd.org/cgi/query-pr.cgi?pr=163521
+# LICENSE=	AL2
 
 MAKE_JOBS_SAFE=	yes
 

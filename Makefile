@@ -88,5 +88,7 @@ post-patch:
 
 do-install:
 	(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} setup.py install)
+	# XXX this might be too permissive, will see what priv is acctually needed
+	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${GRAPHITE_ROOT}/storage
 
 .include <bsd.port.post.mk>

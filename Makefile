@@ -22,7 +22,7 @@ MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	2.4+
 USE_PYDISTUTILS=yes
-PYDISTUTILS_EGGINFODIR=	${WWWDIR}
+PYDISTUTILS_EGGINFODIR=	${WWWDIR}/webapp
 
 FETCH_ARGS=	"-pRr"		# default '-AFpr' prevents 302 redirects by launchpad
 
@@ -39,8 +39,9 @@ OPTIONS=	APACHE "Use apache as webserver" on \
 		SQLITE3 "Enable sqlite3 support" on \
 		MYSQL "Enable MySQL support" off
 
-GRAPHITE_DBDIR?=	"/var/db/graphite"
-GRAPHITE_LOGDIR?=	"/var/log/graphite"
+GRAPHITE_ROOT?=		${WWWDIR}
+PORTEXAMPLES=	example-graphite-vhost.conf \
+				example-client.py
 
 .include <bsd.port.options.mk>
 
@@ -84,25 +85,15 @@ PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 				--install-scripts=${WWWDIR}/graphite/bin
 
 post-patch:
-	@${RM} -f ${WRKSRC}/setup.cfg
-	@${REINPLACE_CMD} -e "s|/opt/graphite|${GRAPHITE_BASE}|g" ${WRKSRC}/conf/graphite.wsgi.example
-	@${REINPLACE_CMD} -e "s|/opt/graphite|${GRAPHITE_BASE}|g" ${WRKSRC}/examples/example-graphite-vhost.conf
-	@${ECHO_MSG} "********************************************************************"
-	@${ECHO_MSG} "Please note that this port overrides the default installation layout"
-	@${ECHO_MSG} "for Graphite by modifying settings.py until the software is able to"
-	@${ECHO_MSG} "configure its own layout."
-	@${ECHO_MSG} "********************************************************************"
+	@${REINPLACE_CMD} -e "s|%%WWWDIR%%|${WWWDIR}|g" ${WRKSRC}/setup.cfg ${WRKSRC}/bin/build-index.sh
+	@${RM} -f ${WRKSRC}/bin/build-index.sh.*
 
-	@${REINPLACE_CMD} -e "s|^\(GRAPHITE_ROOT = \).*|\1'${WWWDIR}/'|" \
-		-e "s|^\(WEBAPP_DIR = \).*|\1GRAPHITE_ROOT + 'webapp/'|" \
-		-e "s|^\(WEB_DIR = \).*|\1GRAPHITE_ROOT + 'graphite/'|" \
-		-e "s|^\(CONF_DIR = \).*|\1'${ETCDIR}/graphite/'|" \
-		-e "s|^\(CONTENT_DIR = \).*|\1WEBAPP_DIR + 'content/'|" \
-		-e "s|^\(STORAGE_DIR = \).*|\1'${GRAPHITE_DBDIR}/graphite/'|" \
-		-e "s|^\(LOG_DIR = \).*|\1'${GRAPHITE_LOGDIR}/'|" \
-		-e "s|^\(THIRDPARTY_DIR = \).*|\1GRAPHITE_ROOT + 'thirdparty/'|" ${WRKSRC}/webapp/graphite/settings.py
-
-	@${REINPLACE_CMD} -e "s|%%GRAPHITE_DBDIR%%|${GRAPHITE_DBDIR}|g" \
-		-e "s|%%EXAMPLESDIR%%|${EXAMPLESDIR}|g" ${WRKSRC}/setup.py
+do-install:
+	(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} setup.py install)
+.if !defined(NOPORTEXAMPLES)
+	@${INSTALL} -d ${EXAMPLESDIR}/
+	${INSTALL_DATA} ${WRKSRC}/examples/example-graphite-vhost.conf ${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/examples/example-client.py ${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.post.mk>

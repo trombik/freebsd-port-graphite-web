@@ -40,8 +40,6 @@ OPTIONS=	APACHE "Use apache as webserver" on \
 		MYSQL "Enable MySQL support" off
 
 GRAPHITE_ROOT?=		${WWWDIR}
-PORTEXAMPLES=	example-graphite-vhost.conf \
-				example-client.py
 
 .include <bsd.port.options.mk>
 
@@ -90,10 +88,5 @@ post-patch:
 
 do-install:
 	(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} setup.py install)
-.if !defined(NOPORTEXAMPLES)
-	@${INSTALL} -d ${EXAMPLESDIR}/
-	${INSTALL_DATA} ${WRKSRC}/examples/example-graphite-vhost.conf ${EXAMPLESDIR}
-	${INSTALL_DATA} ${WRKSRC}/examples/example-client.py ${EXAMPLESDIR}
-.endif
 
 .include <bsd.port.post.mk>

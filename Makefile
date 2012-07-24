@@ -83,7 +83,10 @@ PYDISTUTILS_INSTALLARGS+=	--install-data=${WWWDIR} \
 				--install-scripts=${WWWDIR}/graphite/bin
 
 post-patch:
-	@${REINPLACE_CMD} -e "s|%%WWWDIR%%|${WWWDIR}|g" ${WRKSRC}/setup.cfg ${WRKSRC}/bin/build-index.sh
+	@${REINPLACE_CMD} -e "s|%%WWWDIR%%|${WWWDIR}|g" ${WRKSRC}/setup.cfg \
+		${WRKSRC}/bin/build-index.sh \
+		${WRKSRC}/conf/graphite.wsgi.example
+	@${REINPLACE_CMD} -e "s|%%GRAPHITE_ROOT%%|${GRAPHITE_ROOT}|g" ${WRKSRC}/examples/example-graphite-vhost.conf
 	@${RM} -f ${WRKSRC}/bin/build-index.sh.*
 
 do-install:
